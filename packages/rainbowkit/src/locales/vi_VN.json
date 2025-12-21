@@ -1481,6 +1481,22 @@
           "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
         }
       }
+    },
+    "meco": {
+      "qr_code": {
+        "step1": {
+          "title": "Mở ứng dụng MeCo Wallet",
+          "description": "Thêm MeCo Wallet vào màn hình chính của bạn để truy cập nhanh vào ví của bạn."
+        },
+        "step2": {
+          "title": "Tạo hoặc Nhập ví",
+          "description": "Tạo ví mới hoặc nhập ví hiện có."
+        },
+        "step3": {
+          "title": "Nhấn nút quét",
+          "description": "Sau khi bạn quét, một lời nhắc kết nối sẽ xuất hiện để bạn kết nối ví của mình."
+        }
+      }
     }
   }
 }
