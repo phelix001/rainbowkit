@@ -1481,6 +1481,22 @@
           "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
         }
       }
+    },
+    "meco": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo da Carteira MeCo",
+          "description": "Coloque o MeCo Wallet na sua tela inicial para acessar sua carteira mais rapidamente."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
+        },
+        "step3": {
+          "title": "Toque no botão de escanear",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
+        }
+      }
     }
   }
 }
