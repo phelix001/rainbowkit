@@ -1481,6 +1481,22 @@
           "description": "스캔 후 연결 프롬프트가 나타나 지갑을 연결하세요."
         }
       }
+    },
+    "meco": {
+      "qr_code": {
+        "step1": {
+          "title": "MeCo Wallet 앱을 엽니다",
+          "description": "지갑에 더 빠르게 접근하기 위해 홈 화면에 MeCo Wallet을 추가하세요."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다."
+        },
+        "step3": {
+          "title": "스캔 버튼을 누릅니다",
+          "description": "스캔 후 연결 프롬프트가 나타나 지갑을 연결하세요."
+        }
+      }
     }
   }
 }
