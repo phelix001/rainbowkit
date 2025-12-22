@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useRef } from 'react';
 import { UserRejectedRequestError } from 'viem';
 import { useAccount, useSignMessage } from 'wagmi';
+
 import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';

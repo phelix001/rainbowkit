@@ -1,5 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import remarkSlug from 'remark-slug';
+
 import { rehypeHighlightCode } from './lib/rehype-highlight-code';
 import { rehypeMetaAttribute } from './lib/rehype-meta-attribute';
 

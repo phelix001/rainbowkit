@@ -1,7 +1,6 @@
 import { Box } from 'components/Box/Box';
 import { Code } from 'components/Code/Code';
 import { Text } from 'components/Text/Text';
-import React from 'react';
 import { regionWrapper, table, td, th } from './Table.css';
 
 type HeaderDef = string[];

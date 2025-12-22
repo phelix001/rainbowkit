@@ -10,7 +10,6 @@
  */
 
 import type { Address } from 'viem';
-import { rainbowWallet } from '../src/wallets/walletConnectors/rainbowWallet/rainbowWallet';
 
 // Test accounts for Rainbow wallets
 export const rainbowTestAccounts: readonly [Address, ...Address[]] = [
@@ -115,10 +114,10 @@ export const mockWallet = {
 
 // Re-export WalletConnect mocking utilities from dedicated module
 export {
-  walletConnectServer,
-  setupMatchMedia,
-  setupLocalStorage,
-  setupWalletConnectMocks,
   cleanupWalletConnectMocks,
   closeWalletConnectServer,
+  setupLocalStorage,
+  setupMatchMedia,
+  setupWalletConnectMocks,
+  walletConnectServer,
 } from './mockWalletConnect';

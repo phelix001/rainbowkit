@@ -1,5 +1,3 @@
-import React from 'react';
-
 export function CheckIcon() {
   return (
     <svg fill="none" height="24" width="24" xmlns="http://www.w3.org/2000/svg">

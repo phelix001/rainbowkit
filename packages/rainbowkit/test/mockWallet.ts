@@ -1,6 +1,7 @@
 import type { Address } from 'viem';
 import { createConnector } from 'wagmi';
 import { mock } from 'wagmi/connectors';
+
 import type { Wallet, WalletDetailsParams } from '../src/wallets/Wallet';
 
 export const mockedAccounts: readonly [Address, ...Address[]] = [

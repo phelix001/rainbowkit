@@ -12,7 +12,6 @@ export async function rainbowFetch<TData>(
   url: RequestInfo,
   opts: RainbowFetchRequestOpts,
 ) {
-  // biome-ignore lint/style/noParameterAssign: ignore
   opts = {
     headers: {},
     method: 'get',

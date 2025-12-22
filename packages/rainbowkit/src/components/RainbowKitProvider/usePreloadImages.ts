@@ -1,4 +1,5 @@
 import { useCallback, useEffect } from 'react';
+
 import { isMobile } from '../../utils/isMobile';
 import { isNotNullish } from '../../utils/isNotNullish';
 import { useWalletConnectors } from '../../wallets/useWalletConnectors';

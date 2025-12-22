@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { CreateConnectorFn } from 'wagmi';
 import { walletConnect } from 'wagmi/connectors';
+
 import { connectorsForWallets } from '..';
 import type { CreateWalletFn } from './Wallet';
 import { injectedWallet } from './walletConnectors/injectedWallet/injectedWallet';

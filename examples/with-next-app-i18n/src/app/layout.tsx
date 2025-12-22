@@ -1,3 +1,5 @@
+import type React from 'react';
+
 import '../styles/global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 

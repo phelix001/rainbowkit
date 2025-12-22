@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import type { Address } from 'viem';
 import { useEnsName } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
+
 import {
   ENHANCED_PROVIDER_ENABLED,
   enhancedProviderHttp,

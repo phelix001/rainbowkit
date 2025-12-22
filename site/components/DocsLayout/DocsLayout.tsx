@@ -1,4 +1,9 @@
+import React, { type Ref, useCallback, useEffect } from 'react';
+import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { useAccount } from 'wagmi';
+
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import {
@@ -17,10 +22,6 @@ import { Wrapper } from 'components/Wrapper/Wrapper';
 import { vars } from 'css/vars.css';
 import { allDocsRoutes, docsRoutes } from 'lib/docsRoutes';
 import { useCoolMode } from 'lib/useCoolMode';
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import React, { type Ref, useCallback, useEffect } from 'react';
-import { useAccount } from 'wagmi';
 import {
   content,
   navigationSidebar,

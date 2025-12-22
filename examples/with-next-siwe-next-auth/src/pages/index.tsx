@@ -1,6 +1,7 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { GetServerSideProps, NextPage } from 'next';
 import { getServerSession } from 'next-auth';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
 import { getAuthOptions } from './api/auth/[...nextauth]';
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {

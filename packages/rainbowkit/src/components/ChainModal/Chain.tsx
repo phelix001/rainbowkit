@@ -1,5 +1,6 @@
-import React, { Fragment, useContext } from 'react';
+import { Fragment, useContext } from 'react';
 import type { useSwitchChain } from 'wagmi';
+
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import type { AsyncImageSrc } from '../AsyncImage/useAsyncImage';

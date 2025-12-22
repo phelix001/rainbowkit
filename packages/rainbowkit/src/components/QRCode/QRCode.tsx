@@ -1,7 +1,7 @@
-import React from 'react';
 import { Cuer } from 'cuer';
-import { Box, type BoxProps } from '../Box/Box';
+
 import { useAsyncImage } from '../AsyncImage/useAsyncImage';
+import { Box, type BoxProps } from '../Box/Box';
 import { QRCodeBackgroundClassName } from '../ConnectOptions/DesktopOptions.css';
 
 export type ErrorCorrectionLevel = 'low' | 'medium' | 'quartile' | 'high';
@@ -18,8 +18,7 @@ interface Props {
 export function QRCode({
   ecc = 'medium',
   logoBackground,
-  // biome-ignore lint/correctness/noUnusedVariables: API compatibility
-  logoSize = 50,
+  logoSize: _logoSize = 50,
   logoUrl,
   size: sizeProp = 200,
   uri,

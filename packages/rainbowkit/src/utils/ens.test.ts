@@ -1,4 +1,5 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest';
+
 import { addEnsName, getEnsName, getStorageEnsNameKey } from './ens';
 
 // vitalik.eth
@@ -16,8 +17,7 @@ const localStorageMock: Storage = {
     delete store[key];
   },
   clear: (): void => {},
-  // biome-ignore lint/correctness/noUnusedVariables: <explanation>
-  key: (index: number): string | null => '',
+  key: (_index: number): string | null => '',
   length: Object.keys(store).length,
   // Easier to get number realtime, due to single object
   // reference not allowing us to use localStorage.length realtime

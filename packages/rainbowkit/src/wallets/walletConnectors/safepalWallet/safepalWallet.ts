@@ -1,13 +1,13 @@
-import type {
-  DefaultWalletOptions,
-  InstructionStepName,
-  Wallet,
-} from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type {
+  DefaultWalletOptions,
+  InstructionStepName,
+  Wallet,
+} from '../../Wallet';
 
 export type SafepalWalletOptions = DefaultWalletOptions;
 
@@ -25,7 +25,7 @@ export const safepalWallet = ({
     return `safepalwallet://wc?uri=${encodeURIComponent(uri)}`;
   };
 
-  const getUriQR = async (uri: string) => {
+  const getUriQR = (uri: string) => {
     return uri;
   };
 
@@ -33,7 +33,7 @@ export const safepalWallet = ({
     getUri: shouldUseWalletConnect ? getUriMobile : undefined,
   };
 
-  let qrConnector = undefined;
+  let qrConnector: Wallet['qrCode'];
 
   if (shouldUseWalletConnect) {
     qrConnector = {

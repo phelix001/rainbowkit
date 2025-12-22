@@ -1,5 +1,6 @@
 import { createConnector } from 'wagmi';
 import { injected } from 'wagmi/connectors';
+
 import type { WalletProviderFlags, WindowProvider } from '../types/utils';
 import type { CreateConnector, WalletDetailsParams } from './Wallet';
 

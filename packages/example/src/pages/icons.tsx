@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Cuer } from 'cuer';
 import * as wallets from '@rainbow-me/rainbowkit/wallets';
 

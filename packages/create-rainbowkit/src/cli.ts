@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -9,6 +10,7 @@ import { execa } from 'execa';
 import fs from 'fs-extra';
 import prompts from 'prompts';
 import validateNpmPackageName from 'validate-npm-package-name';
+
 import { detectPackageManager } from './detectPackageManager';
 
 const log = console.log;

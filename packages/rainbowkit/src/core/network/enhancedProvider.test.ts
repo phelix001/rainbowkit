@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import {
   ENHANCED_PROVIDER_ENABLED,
   enhancedProviderHttp,

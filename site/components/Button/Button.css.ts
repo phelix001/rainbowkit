@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
+
 import { atoms } from 'css/atoms';
 import type { Sprinkles } from 'css/sprinkles.css';
 import { vars } from 'css/vars.css';

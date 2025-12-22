@@ -4,8 +4,8 @@ import NextAuth, { type NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { getCsrfToken } from 'next-auth/react';
 import {
-  type SiweMessage,
   parseSiweMessage,
+  type SiweMessage,
   validateSiweMessage,
 } from 'viem/siwe';
 

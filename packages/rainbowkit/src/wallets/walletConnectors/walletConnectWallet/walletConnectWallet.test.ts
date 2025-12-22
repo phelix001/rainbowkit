@@ -1,4 +1,5 @@
 import { describe, expect, expectTypeOf, it } from 'vitest';
+
 import type { Wallet } from '../../Wallet';
 import { walletConnectWallet } from './walletConnectWallet';
 
@@ -7,7 +8,7 @@ describe('walletConnectWallet', () => {
 
   it('without projectId', () => {
     expect(() =>
-      // @ts-ignore
+      // @ts-expect-error
       walletConnectWallet({
         /* no project id */
       }),

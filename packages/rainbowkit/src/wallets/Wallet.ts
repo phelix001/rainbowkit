@@ -1,5 +1,6 @@
 import type { Connector, CreateConnectorFn } from 'wagmi';
 import type { WalletConnectParameters } from 'wagmi/connectors';
+
 import type { CoinbaseWalletOptions } from './walletConnectors/coinbaseWallet/coinbaseWallet';
 import type { WalletConnectWalletOptions } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 

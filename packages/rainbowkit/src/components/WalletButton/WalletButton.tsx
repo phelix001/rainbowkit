@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
+
 import { touchableStyles } from '../../css/touchableStyles';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
@@ -12,6 +13,7 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
     <WalletButtonRenderer wallet={wallet}>
       {({ ready, connect, connected, mounted, connector, loading }) => {
         const isDisabled = !ready || loading;
+        // biome-ignore lint/correctness/useHookAtTopLevel: hook is called in render prop which is valid
         const { i18n } = useContext(I18nContext);
         const connectorName = connector?.name || '';
 

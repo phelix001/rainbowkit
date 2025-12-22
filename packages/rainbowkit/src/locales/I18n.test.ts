@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { I18n } from './I18n';
 
 describe('I18n', () => {

@@ -1,7 +1,6 @@
-import { useTranslations } from 'next-intl';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React from 'react';
+import { useTranslations } from 'next-intl';
 
 type TitleAndMetaTagsProps = {
   description?: string;

@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { lightTheme } from '../themes/lightTheme';
 import { cssObjectFromTheme } from './cssObjectFromTheme';
 

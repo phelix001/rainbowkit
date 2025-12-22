@@ -11,7 +11,6 @@ export const convertHexToRGBA = (hexCode: string, opacity = 1): string => {
 
   /* Backward compatibility for whole number based opacity values. */
   if (opacity > 1 && opacity <= 100) {
-    // biome-ignore lint/style/noParameterAssign: TODO
     opacity = opacity / 100;
   }
 

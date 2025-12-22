@@ -1,10 +1,11 @@
+import type React from 'react';
+import type { Ref } from 'react';
+import { useAccount } from 'wagmi';
+
 import { Box } from 'components/Box/Box';
 import { Header } from 'components/Header/Header';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import { useCoolMode } from 'lib/useCoolMode';
-import type React from 'react';
-import type { Ref } from 'react';
-import { useAccount } from 'wagmi';
 import { content } from './GuidesLayout.css';
 
 export function GuidesLayout({ children }: { children: React.ReactNode }) {

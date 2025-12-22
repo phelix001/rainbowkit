@@ -1,16 +1,7 @@
-import { RainbowButton } from '@rainbow-me/rainbow-button';
-import {
-  ConnectButton,
-  WalletButton,
-  useAccountModal,
-  useAddRecentTransaction,
-  useChainModal,
-  useConnectModal,
-} from '@rainbow-me/rainbowkit';
+import { type ComponentProps, useEffect, useState } from 'react';
 import type { GetServerSideProps } from 'next';
 import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
-import React, { type ComponentProps, useEffect, useState } from 'react';
 import { type Address, parseEther } from 'viem';
 import {
   useAccount,
@@ -18,6 +9,16 @@ import {
   useSignMessage,
   useSignTypedData,
 } from 'wagmi';
+import { RainbowButton } from '@rainbow-me/rainbow-button';
+import {
+  ConnectButton,
+  useAccountModal,
+  useAddRecentTransaction,
+  useChainModal,
+  useConnectModal,
+  WalletButton,
+} from '@rainbow-me/rainbowkit';
+
 import type { AppContextProps } from '../lib/AppContextProps';
 import { getAuthOptions } from './api/auth/[...nextauth]';
 

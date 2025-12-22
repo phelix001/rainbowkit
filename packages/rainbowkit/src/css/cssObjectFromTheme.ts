@@ -1,4 +1,5 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+
 import { type ThemeVars, themeVars } from './sprinkles.css';
 
 const resolveThemeVars = (theme: ThemeVars | (() => ThemeVars)) =>

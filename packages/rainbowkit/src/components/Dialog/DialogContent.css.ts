@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+
 import { largeScreenMinWidth, sprinkles } from '../../css/sprinkles.css';
 
 // biome-ignore format: design system keys

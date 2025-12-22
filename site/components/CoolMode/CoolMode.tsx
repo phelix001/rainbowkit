@@ -1,7 +1,6 @@
 import { Box } from 'components/Box/Box';
 import { Button, type Props as ButtonProps } from 'components/Button/Button';
 import { useCoolMode } from 'lib/useCoolMode';
-import React from 'react';
 import { cool } from './CoolMode.css';
 
 export function CoolMode() {

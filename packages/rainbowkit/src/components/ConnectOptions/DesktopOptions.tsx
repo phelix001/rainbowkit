@@ -1,16 +1,12 @@
-import React, {
-  Fragment,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { Fragment, useContext, useEffect, useRef, useState } from 'react';
+
 import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
+import { addLatestWalletId } from '../../wallets/latestWalletId';
 import {
-  type WalletConnector,
   useWalletConnectors,
+  type WalletConnector,
 } from '../../wallets/useWalletConnectors';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
@@ -28,8 +24,6 @@ import {
 } from '../RainbowKitProvider/ModalSizeContext';
 import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
 import { Text } from '../Text/Text';
-
-import { addLatestWalletId } from '../../wallets/latestWalletId';
 import {
   ConnectDetail,
   DownloadDetail,
@@ -98,16 +92,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     'Others',
     'Installed',
   ];
-
-  // If a user hasn't installed the extension we will get the
-  // qr code with additional steps on how to get the wallet
-  useEffect(() => {
-    if (connector && !initialized.current) {
-      changeWalletStep(WalletStep.Connect);
-      selectWallet(connector);
-      initialized.current = true;
-    }
-  }, [connector]);
 
   const connectToWallet = (wallet: WalletConnector) => {
     setConnectionError(false);
@@ -212,6 +196,17 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     WalletStep.None,
   );
   const [walletStep, setWalletStep] = useState<WalletStep>(WalletStep.None);
+
+  // If a user hasn't installed the extension we will get the
+  // qr code with additional steps on how to get the wallet
+  // biome-ignore lint/correctness/useExhaustiveDependencies: changeWalletStep and selectWallet are intentionally omitted - they're stable callbacks
+  useEffect(() => {
+    if (connector && !initialized.current) {
+      changeWalletStep(WalletStep.Connect);
+      selectWallet(connector);
+      initialized.current = true;
+    }
+  }, [connector]);
 
   let walletContent = null;
   let headerLabel = null;

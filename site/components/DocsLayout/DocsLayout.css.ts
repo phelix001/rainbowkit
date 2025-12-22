@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+
 import { breakpoints } from 'css/breakpoints';
 import { responsiveStyle } from 'css/responsiveStyle';
 import { vars } from 'css/vars.css';

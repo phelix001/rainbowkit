@@ -1,11 +1,11 @@
-import {
-  RainbowKitAuthenticationProvider,
-  createAuthenticationAdapter,
-} from '@rainbow-me/rainbowkit';
+import { type ReactNode, useMemo } from 'react';
 import { getCsrfToken, signIn, signOut, useSession } from 'next-auth/react';
-import React, { type ReactNode, useMemo } from 'react';
 import type { Address } from 'viem';
-import { type SiweMessage, createSiweMessage } from 'viem/siwe';
+import { createSiweMessage, type SiweMessage } from 'viem/siwe';
+import {
+  createAuthenticationAdapter,
+  RainbowKitAuthenticationProvider,
+} from '@rainbow-me/rainbowkit';
 
 type UnconfigurableMessageOptions = {
   address: Address;

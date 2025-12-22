@@ -1,9 +1,9 @@
-import { Box } from 'components/Box/Box';
-import { Text } from 'components/Text/Text';
-import { useTranslations } from 'next-intl';
 import NextImage from 'next/legacy/image';
 import Link from 'next/link';
-import React from 'react';
+import { useTranslations } from 'next-intl';
+
+import { Box } from 'components/Box/Box';
+import { Text } from 'components/Text/Text';
 import { grid } from './UsedBy.css';
 
 const frens = [

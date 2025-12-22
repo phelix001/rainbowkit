@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+
 import {
-  type ResponsiveValue,
   mapResponsiveValue,
   normalizeResponsiveValue,
+  type ResponsiveValue,
 } from '../../css/sprinkles.css';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
@@ -46,7 +47,7 @@ export function ConnectButton({
 
   const { i18n } = useContext(I18nContext);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: setShowBalance is stable
   useEffect(() => {
     setShowBalance(showBalance);
     if (!ready) setReady(true);
@@ -290,9 +291,7 @@ export function ConnectButton({
         );
       }}
     </ConnectButtonRenderer>
-  ) : (
-    <></>
-  );
+  ) : null;
 }
 
 ConnectButton.__defaultProps = defaultProps;

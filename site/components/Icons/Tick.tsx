@@ -1,5 +1,3 @@
-import React from 'react';
-
 export function TickIcon() {
   return (
     <svg fill="none" height="22" width="22" xmlns="http://www.w3.org/2000/svg">

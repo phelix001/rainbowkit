@@ -1,5 +1,6 @@
 import { type CreateConnectorFn, createConnector } from 'wagmi';
 import { gemini } from 'wagmi/connectors';
+
 import type { Wallet, WalletDetailsParams } from '../../Wallet';
 
 export interface GeminiWalletOptions {

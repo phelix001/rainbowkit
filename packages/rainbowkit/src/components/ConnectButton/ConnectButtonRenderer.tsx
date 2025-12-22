@@ -1,5 +1,6 @@
-import React, { type ReactNode, useContext } from 'react';
+import { type ReactNode, useContext } from 'react';
 import { useAccount, useConfig } from 'wagmi';
+
 import { normalizeResponsiveValue } from '../../css/sprinkles.css';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { useProfile } from '../../hooks/useProfile';
