@@ -114,6 +114,21 @@ export const YourApp = () => {
 
 بعض أدوات البناء ستتطلب إعدادًا إضافيًا.
 
+##### Next.js
+
+RainbowKit works with both [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) (the default bundler in Next.js 16+) and [webpack](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack).
+
+If you're using plugins that still require Webpack, add the `--webpack` flag to your scripts:
+
+```json
+{
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack"
+  }
+}
+```
+
 ##### Remix
 
 عند استخدام Remix، يجب عليك ملء وحدات buffer و events و http. قم بمراجعة تكوين Remix أدناه، أو [مشروع Remix النموذجي الخاص بنا](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
