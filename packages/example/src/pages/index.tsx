@@ -10,7 +10,8 @@ import {
 import type { GetServerSideProps } from 'next';
 import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
-import React, { type ComponentProps, useEffect, useState } from 'react';
+import type React from 'react';
+import { type ComponentProps, useEffect, useState } from 'react';
 import { type Address, parseEther } from 'viem';
 import {
   useAccount,
@@ -227,6 +228,31 @@ const Example = ({ authEnabled }: AppContextProps) => {
               );
             }}
           </RainbowButton.Custom>
+        </div>
+      </div>
+
+      <div>
+        <h3 style={{ fontFamily: 'sans-serif' }}>Custom wallet buttons</h3>
+
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          {['rainbow', 'metamask', 'baseAccount'].map((wallet) => {
+            return (
+              <WalletButton.Custom key={wallet} wallet={wallet}>
+                {({ connect, ready }) => {
+                  return (
+                    <button
+                      type="button"
+                      disabled={!ready}
+                      onClick={connect}
+                      style={{ marginLeft: '16px' }}
+                    >
+                      Connect {wallet}
+                    </button>
+                  );
+                }}
+              </WalletButton.Custom>
+            );
+          })}
         </div>
       </div>
 
