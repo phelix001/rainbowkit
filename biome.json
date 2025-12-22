@@ -1,18 +1,47 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              ":URL:",
+              ":NODE:",
+              ["react", "react-dom", "react-dom/**"],
+              ["next", "next/**"],
+              [
+                ":PACKAGE:",
+                "!@rainbow-me/**",
+                "!components/**",
+                "!lib/**",
+                "!css/**"
+              ],
+              "@rainbow-me/**",
+              ":BLANK_LINE:",
+              ["components/**", "lib/**", "css/**"],
+              ":PATH:"
+            ]
+          }
+        }
+      }
+    }
+  },
   "files": {
-    "ignore": [
-      "CHANGELOG.md",
-      "pnpm-lock.yaml",
-      "package.json",
-      "tsconfig.json",
-      "tsconfig.*.json",
-      "./packages/create-rainbowkit/generated-test-app/",
-      "build/",
-      ".react-router",
-      "examples/with-next-mint-nft/contract/",
-      "packages/rainbowkit/assets/wallets/registry.json",
-      "**/next-env.d.ts"
+    "includes": [
+      "**",
+      "!CHANGELOG.md",
+      "!pnpm-lock.yaml",
+      "!package.json",
+      "!tsconfig.json",
+      "!tsconfig.*.json",
+      "!./packages/create-rainbowkit/generated-test-app",
+      "!build",
+      "!.react-router",
+      "!examples/with-next-mint-nft/contract",
+      "!packages/rainbowkit/assets/wallets/registry.json",
+      "!**/next-env.d.ts"
     ]
   },
   "formatter": {
@@ -27,7 +56,9 @@
     "rules": {
       "recommended": true,
       "a11y": {
-        "useButtonType": "off"
+        "useButtonType": "off",
+        "noLabelWithoutControl": "off",
+        "noStaticElementInteractions": "off"
       },
       "complexity": {
         "noBannedTypes": "off",
@@ -37,11 +68,12 @@
         "noUnusedVariables": "error"
       },
       "performance": {
-        "noDelete": "off"
+        "noDelete": "off",
+        "noImgElement": "off"
       },
       "style": {
         "noNonNullAssertion": "off",
-        "useShorthandArrayType": "error"
+        "useConsistentArrayType": "error"
       },
       "suspicious": {
         "noArrayIndexKey": "off",
@@ -59,8 +91,10 @@
       "semicolons": "always"
     }
   },
-  "organizeImports": {
-    "enabled": false
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
   },
   "vcs": {
     "enabled": true,
