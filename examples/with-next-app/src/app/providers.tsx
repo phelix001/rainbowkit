@@ -1,13 +1,20 @@
 'use client';
 
 import type React from 'react';
-import dynamic from 'next/dynamic';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { WagmiProvider } from 'wagmi';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
-const WalletProviders = dynamic(
-  () => import('./wallet-providers').then((mod) => mod.WalletProviders),
-  { ssr: false },
-);
+import { config } from '../wagmi';
+
+const queryClient = new QueryClient();
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  return <WalletProviders>{children}</WalletProviders>;
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>{children}</RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
 }
