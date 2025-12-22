@@ -1,14 +1,14 @@
-import React from 'react';
 import {
-  type SpyInstance,
   afterAll,
   beforeAll,
   describe,
   expect,
   it,
+  type SpyInstance,
   vi,
 } from 'vitest';
 import { mainnet } from 'wagmi/chains';
+
 import { renderWithProviders } from '../../../test';
 import { mockWallet } from '../../../test/mockWallet';
 import { WalletButton } from './WalletButton';

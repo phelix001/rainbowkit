@@ -1,4 +1,4 @@
-import React, {
+import {
   type ReactNode,
   useContext,
   useEffect,
@@ -6,6 +6,7 @@ import React, {
   useState,
 } from 'react';
 import { useAccount, useAccountEffect } from 'wagmi';
+
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { isMobile } from '../../utils/isMobile';
@@ -15,8 +16,8 @@ import {
   getLatestWalletId,
 } from '../../wallets/latestWalletId';
 import {
-  type WalletConnector,
   useWalletConnectors,
+  type WalletConnector,
 } from '../../wallets/useWalletConnectors';
 import {
   useConnectModal,

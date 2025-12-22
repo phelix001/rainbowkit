@@ -1,5 +1,6 @@
 import type { Address } from 'viem';
 import { useBalance } from 'wagmi';
+
 import { useMainnetEnsAvatar } from './useMainnetEnsAvatar';
 import { useMainnetEnsName } from './useMainnetEnsName';
 

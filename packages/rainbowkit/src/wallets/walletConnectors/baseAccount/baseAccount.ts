@@ -3,6 +3,7 @@ import {
   type BaseAccountParameters,
   baseAccount as baseAccountConnector,
 } from 'wagmi/connectors';
+
 import type { Wallet, WalletDetailsParams } from '../../Wallet';
 
 export interface BaseAccountOptions {

@@ -1,10 +1,11 @@
 import React from 'react';
 import type { PublicClient, TransactionReceipt } from 'viem';
 import { useAccount, useBalance, usePublicClient } from 'wagmi';
+
 import { useChainId } from '../hooks/useChainId';
 import {
-  type TransactionStore,
   createTransactionStore,
+  type TransactionStore,
 } from './transactionStore';
 
 // Only allow a single instance of the store to exist at once

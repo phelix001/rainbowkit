@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const SwitchAccountIcon = () => (
   <svg
     fill="none"

@@ -1,10 +1,3 @@
-import { DocSearchModal } from '@docsearch/react';
-import clsx from 'clsx';
-import { Box, type BoxProps } from 'components/Box/Box';
-import { useActionKey } from 'lib/useActionKey';
-import Head from 'next/head';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import type React from 'react';
 import {
   createContext,
@@ -14,6 +7,14 @@ import {
   useState,
 } from 'react';
 import { createPortal } from 'react-dom';
+import Head from 'next/head';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { DocSearchModal } from '@docsearch/react';
+import clsx from 'clsx';
+
+import { Box, type BoxProps } from 'components/Box/Box';
+import { useActionKey } from 'lib/useActionKey';
 
 const INDEX_NAME = 'rainbowkit';
 const API_KEY = '671f4a1482dd79c7a57883c939250293';
@@ -159,7 +160,11 @@ function useDocSearchKeyboardEvents({
   isOpen,
   onClose,
   onOpen,
-}: { isOpen: boolean; onClose: () => void; onOpen: () => void }) {
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  onOpen: () => void;
+}) {
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (

@@ -1,10 +1,11 @@
-import { createConnector } from 'wagmi';
 import type { CreateConnectorFn } from 'wagmi';
+import { createConnector } from 'wagmi';
 import {
   mock,
   type WalletConnectParameters,
   walletConnect,
 } from 'wagmi/connectors';
+
 import type {
   CreateConnector,
   RainbowKitDetails,

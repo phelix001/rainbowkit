@@ -1,4 +1,5 @@
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
+
 import { Text } from '../Text/Text';
 
 export const DisclaimerText = ({ children }: { children: ReactNode }) => {

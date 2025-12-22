@@ -1,4 +1,5 @@
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+
 import { auth } from '../auth';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

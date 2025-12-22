@@ -3,6 +3,7 @@ import {
   type CoinbaseWalletParameters,
   coinbaseWallet as coinbaseConnector,
 } from 'wagmi/connectors';
+
 import { isIOS } from '../../../utils/isMobile';
 import type { Wallet, WalletDetailsParams } from '../../Wallet';
 

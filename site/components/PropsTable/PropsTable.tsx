@@ -7,7 +7,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from 'components/Popover/Popover';
-import React from 'react';
 import { regionWrapper, table, td, th } from './PropsTable.css';
 
 type PropDef = {

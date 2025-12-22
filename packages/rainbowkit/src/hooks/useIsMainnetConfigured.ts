@@ -1,4 +1,5 @@
 import { mainnet } from 'wagmi/chains';
+
 import { useRainbowKitChains } from '../components/RainbowKitProvider/RainbowKitChainContext';
 
 export function useIsMainnetConfigured() {

@@ -1,6 +1,6 @@
+import { useEffect, useRef, useState } from 'react';
 import { animated } from '@react-spring/three';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
-import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 function lerpRGB(color1, color2, t) {

@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef } from 'react';
+
 import { useAsyncImage } from '../AsyncImage/useAsyncImage';
 import { CoolModeContext } from './CoolModeContext';
 

@@ -3,6 +3,7 @@ import {
   createGlobalThemeContract,
 } from '@vanilla-extract/css';
 import deepmerge from 'deepmerge';
+
 import { type Mode, tokens } from './tokens';
 import type { Theme } from './types';
 

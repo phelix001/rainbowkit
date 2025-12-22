@@ -1,6 +1,7 @@
-import clsx from 'clsx';
-import { Box, type BoxProps } from 'components/Box/Box';
 import React, { type JSX } from 'react';
+import clsx from 'clsx';
+
+import { Box, type BoxProps } from 'components/Box/Box';
 import * as styles from './Link.css';
 
 type Props = {

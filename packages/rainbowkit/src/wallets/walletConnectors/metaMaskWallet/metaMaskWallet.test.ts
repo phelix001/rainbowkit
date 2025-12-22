@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { metaMaskWallet } from './metaMaskWallet';
 
 const projectId = 'test-id';

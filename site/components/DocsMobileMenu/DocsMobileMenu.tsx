@@ -1,6 +1,7 @@
-import { Portal } from '@radix-ui/react-portal';
-import { useIsMounted } from 'lib/useIsMounted';
 import React from 'react';
+import { Portal } from '@radix-ui/react-portal';
+
+import { useIsMounted } from 'lib/useIsMounted';
 
 export const DocsMobileMenuContext = React.createContext<
   React.RefObject<HTMLDivElement>
@@ -8,7 +9,9 @@ export const DocsMobileMenuContext = React.createContext<
 
 export function DocsMobileMenuSlot({
   children,
-}: { children: React.ReactNode }) {
+}: {
+  children: React.ReactNode;
+}) {
   const docsMobileMenuRef = React.useContext(DocsMobileMenuContext);
   const isMounted = useIsMounted();
 

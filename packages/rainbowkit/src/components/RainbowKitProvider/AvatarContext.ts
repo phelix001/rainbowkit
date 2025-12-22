@@ -1,5 +1,6 @@
 import type React from 'react';
 import { createContext } from 'react';
+
 import { EmojiAvatar } from '../Avatar/EmojiAvatar';
 
 export type AvatarComponentProps = {

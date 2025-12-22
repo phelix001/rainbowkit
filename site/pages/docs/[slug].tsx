@@ -1,12 +1,12 @@
+import Head from 'next/head';
+import { useLiveReload, useMDXComponent } from 'next-contentlayer/hooks';
+
 import { Box } from 'components/Box/Box';
 import { components } from 'components/MdxComponents/MdxComponents';
 import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
 import { docsRoutes } from 'lib/docsRoutes';
-import { useLiveReload, useMDXComponent } from 'next-contentlayer/hooks';
-import Head from 'next/head';
-import React from 'react';
 import pckg from '../../../packages/rainbowkit/package.json';
-import { type Doc, allDocs } from '.contentlayer/generated';
+import { allDocs, type Doc } from '.contentlayer/generated';
 
 const RAINBOWKIT_VERSION = pckg.version as string;
 
@@ -56,16 +56,17 @@ export async function getStaticPaths() {
 export async function getStaticProps({
   params,
   locale,
-}: { params: any; locale: any }) {
+}: {
+  params: any;
+  locale: any;
+}) {
   const doc = allDocs.find(
     (doc) => doc.slug === params.slug && doc.locale === locale,
   )!;
   const sectionName = docsRoutes.reduce((acc, curr) => {
     for (const page of curr.pages) {
       if (page.slug === params.slug) {
-        // biome-ignore lint/style/noParameterAssign: TODO
-        acc = doc.title;
-        break;
+        return doc.title;
       }
     }
     return acc;

@@ -1,5 +1,4 @@
 import { vars } from 'css/vars.css';
-import React from 'react';
 
 export function InfoIcon() {
   return (

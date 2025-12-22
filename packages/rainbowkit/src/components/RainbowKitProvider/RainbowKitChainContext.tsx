@@ -1,11 +1,7 @@
-import React, {
-  type ReactNode,
-  createContext,
-  useContext,
-  useMemo,
-} from 'react';
+import { createContext, type ReactNode, useContext, useMemo } from 'react';
 import { useConfig } from 'wagmi';
 import type { Chain } from 'wagmi/chains';
+
 import { provideRainbowKitChains } from './provideRainbowKitChains';
 
 export interface RainbowKitChain extends Chain {

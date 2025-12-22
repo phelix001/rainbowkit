@@ -1,4 +1,3 @@
-import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import { publicActions } from 'viem';
 import {
   arbitrum,
@@ -8,6 +7,7 @@ import {
   polygon,
   sepolia,
 } from 'wagmi/chains';
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 
 export const config = getDefaultConfig({
   appName: 'RainbowKit demo',

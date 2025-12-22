@@ -1,5 +1,5 @@
-import React from 'react';
 import { useAccount } from 'wagmi';
+
 import { touchableStyles } from '../../css/touchableStyles';
 import type { Transaction } from '../../transactions/transactionStore';
 import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';

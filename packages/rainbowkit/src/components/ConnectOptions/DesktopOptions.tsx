@@ -1,16 +1,19 @@
-import React, {
+import {
   Fragment,
+  useCallback,
   useContext,
   useEffect,
   useRef,
   useState,
 } from 'react';
+
 import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
+import { addLatestWalletId } from '../../wallets/latestWalletId';
 import {
-  type WalletConnector,
   useWalletConnectors,
+  type WalletConnector,
 } from '../../wallets/useWalletConnectors';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
@@ -28,8 +31,6 @@ import {
 } from '../RainbowKitProvider/ModalSizeContext';
 import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
 import { Text } from '../Text/Text';
-
-import { addLatestWalletId } from '../../wallets/latestWalletId';
 import {
   ConnectDetail,
   DownloadDetail,
@@ -99,6 +100,127 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     'Installed',
   ];
 
+  const [initialWalletStep, setInitialWalletStep] = useState<WalletStep>(
+    WalletStep.None,
+  );
+  const [walletStep, setWalletStep] = useState<WalletStep>(WalletStep.None);
+
+  const clearSelectedWallet = useCallback(() => {
+    setSelectedOptionId(undefined);
+    setSelectedWallet(undefined);
+    setQrCodeUri(undefined);
+  }, []);
+
+  const changeWalletStep = useCallback(
+    (newWalletStep: WalletStep, isBack = false) => {
+      if (
+        isBack &&
+        newWalletStep === WalletStep.Get &&
+        initialWalletStep === WalletStep.Get
+      ) {
+        clearSelectedWallet();
+      } else if (!isBack && newWalletStep === WalletStep.Get) {
+        setInitialWalletStep(WalletStep.Get);
+      } else if (!isBack && newWalletStep === WalletStep.Connect) {
+        setInitialWalletStep(WalletStep.Connect);
+      }
+      setWalletStep(newWalletStep);
+    },
+    [initialWalletStep, clearSelectedWallet],
+  );
+
+  const connectToWallet = useCallback((wallet: WalletConnector) => {
+    setConnectionError(false);
+    if (wallet.ready) {
+      wallet?.connect?.()?.catch(() => {
+        setConnectionError(true);
+      });
+    }
+  }, []);
+
+  const onDesktopUri = useCallback(
+    async (wallet: WalletConnector) => {
+      const sWallet = wallets.find((w) => wallet.id === w.id);
+
+      if (!sWallet?.getDesktopUri) return;
+
+      setTimeout(async () => {
+        const uri = await sWallet?.getDesktopUri?.();
+        if (uri) window.open(uri, safari ? '_blank' : '_self');
+      }, 0);
+    },
+    [wallets, safari],
+  );
+
+  const onQrCode = useCallback(
+    async (wallet: WalletConnector) => {
+      const sWallet = wallets.find((w) => wallet.id === w.id);
+
+      const uri = await sWallet?.getQrCodeUri?.();
+
+      setQrCodeUri(uri);
+
+      // This timeout prevents the UI from flickering if connection is instant,
+      // otherwise users will see a flash of the "connecting" state.
+      setTimeout(
+        () => {
+          setSelectedWallet(sWallet);
+          changeWalletStep(WalletStep.Connect);
+        },
+        uri ? 0 : 50,
+      );
+    },
+    [wallets, changeWalletStep],
+  );
+
+  const selectWallet = useCallback(
+    async (wallet: WalletConnector) => {
+      // We still want to get the latest wallet id to show connected
+      // green badge on our custom WalletButton API
+      addLatestWalletId(wallet.id);
+
+      // This ensures that we listen to the provider.once("display_uri")
+      // before connecting to the wallet
+      if (wallet.ready) {
+        onQrCode(wallet);
+        onDesktopUri(wallet);
+      }
+
+      connectToWallet(wallet);
+      setSelectedOptionId(wallet.id);
+
+      if (!wallet.ready) {
+        setSelectedWallet(wallet);
+        changeWalletStep(
+          wallet?.extensionDownloadUrl
+            ? WalletStep.DownloadOptions
+            : WalletStep.Connect,
+        );
+      }
+    },
+    [onQrCode, onDesktopUri, connectToWallet, changeWalletStep],
+  );
+
+  const getWalletDownload = useCallback(
+    (id: string) => {
+      const sWallet = unfilteredWallets.find((w) => id === w.id);
+      const isMobile = sWallet?.downloadUrls?.qrCode;
+      const isDesktop = !!sWallet?.desktopDownloadUrl;
+      const isExtension = !!sWallet?.extensionDownloadUrl;
+      setSelectedWallet(sWallet);
+      if (isMobile && (isExtension || isDesktop)) {
+        changeWalletStep(WalletStep.DownloadOptions);
+      } else if (isMobile) {
+        changeWalletStep(WalletStep.Download);
+      } else if (isDesktop) {
+        changeWalletStep(WalletStep.InstructionsDesktop);
+      } else {
+        changeWalletStep(WalletStep.InstructionsExtension);
+      }
+    },
+    [unfilteredWallets, changeWalletStep],
+  );
+
   // If a user hasn't installed the extension we will get the
   // qr code with additional steps on how to get the wallet
   useEffect(() => {
@@ -107,111 +229,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       selectWallet(connector);
       initialized.current = true;
     }
-  }, [connector]);
-
-  const connectToWallet = (wallet: WalletConnector) => {
-    setConnectionError(false);
-    if (wallet.ready) {
-      wallet?.connect?.()?.catch(() => {
-        setConnectionError(true);
-      });
-    }
-  };
-
-  const onDesktopUri = async (wallet: WalletConnector) => {
-    const sWallet = wallets.find((w) => wallet.id === w.id);
-
-    if (!sWallet?.getDesktopUri) return;
-
-    setTimeout(async () => {
-      const uri = await sWallet?.getDesktopUri?.();
-      if (uri) window.open(uri, safari ? '_blank' : '_self');
-    }, 0);
-  };
-
-  const onQrCode = async (wallet: WalletConnector) => {
-    const sWallet = wallets.find((w) => wallet.id === w.id);
-
-    const uri = await sWallet?.getQrCodeUri?.();
-
-    setQrCodeUri(uri);
-
-    // This timeout prevents the UI from flickering if connection is instant,
-    // otherwise users will see a flash of the "connecting" state.
-    setTimeout(
-      () => {
-        setSelectedWallet(sWallet);
-        changeWalletStep(WalletStep.Connect);
-      },
-      uri ? 0 : 50,
-    );
-  };
-
-  const selectWallet = async (wallet: WalletConnector) => {
-    // We still want to get the latest wallet id to show connected
-    // green badge on our custom WalletButton API
-    addLatestWalletId(wallet.id);
-
-    // This ensures that we listen to the provider.once("display_uri")
-    // before connecting to the wallet
-    if (wallet.ready) {
-      onQrCode(wallet);
-      onDesktopUri(wallet);
-    }
-
-    connectToWallet(wallet);
-    setSelectedOptionId(wallet.id);
-
-    if (!wallet.ready) {
-      setSelectedWallet(wallet);
-      changeWalletStep(
-        wallet?.extensionDownloadUrl
-          ? WalletStep.DownloadOptions
-          : WalletStep.Connect,
-      );
-    }
-  };
-
-  const getWalletDownload = (id: string) => {
-    const sWallet = unfilteredWallets.find((w) => id === w.id);
-    const isMobile = sWallet?.downloadUrls?.qrCode;
-    const isDesktop = !!sWallet?.desktopDownloadUrl;
-    const isExtension = !!sWallet?.extensionDownloadUrl;
-    setSelectedWallet(sWallet);
-    if (isMobile && (isExtension || isDesktop)) {
-      changeWalletStep(WalletStep.DownloadOptions);
-    } else if (isMobile) {
-      changeWalletStep(WalletStep.Download);
-    } else if (isDesktop) {
-      changeWalletStep(WalletStep.InstructionsDesktop);
-    } else {
-      changeWalletStep(WalletStep.InstructionsExtension);
-    }
-  };
-
-  const clearSelectedWallet = () => {
-    setSelectedOptionId(undefined);
-    setSelectedWallet(undefined);
-    setQrCodeUri(undefined);
-  };
-  const changeWalletStep = (newWalletStep: WalletStep, isBack = false) => {
-    if (
-      isBack &&
-      newWalletStep === WalletStep.Get &&
-      initialWalletStep === WalletStep.Get
-    ) {
-      clearSelectedWallet();
-    } else if (!isBack && newWalletStep === WalletStep.Get) {
-      setInitialWalletStep(WalletStep.Get);
-    } else if (!isBack && newWalletStep === WalletStep.Connect) {
-      setInitialWalletStep(WalletStep.Connect);
-    }
-    setWalletStep(newWalletStep);
-  };
-  const [initialWalletStep, setInitialWalletStep] = useState<WalletStep>(
-    WalletStep.None,
-  );
-  const [walletStep, setWalletStep] = useState<WalletStep>(WalletStep.None);
+  }, [connector, changeWalletStep, selectWallet]);
 
   let walletContent = null;
   let headerLabel = null;

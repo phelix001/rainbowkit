@@ -1,3 +1,10 @@
+import React, { type Ref, useState } from 'react';
+import NextImage from 'next/legacy/image';
+import NextLink from 'next/link';
+import copy from 'copy-to-clipboard';
+import { useTranslations } from 'next-intl';
+import { useAccount } from 'wagmi';
+
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Header } from 'components/Header/Header';
@@ -11,14 +18,8 @@ import { Text } from 'components/Text/Text';
 import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
 import { UsedBy } from 'components/UsedBy/UsedBy';
 import { Wrapper } from 'components/Wrapper/Wrapper';
-import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
 import { useCoolMode } from 'lib/useCoolMode';
-import { useTranslations } from 'next-intl';
-import NextImage from 'next/legacy/image';
-import NextLink from 'next/link';
-import React, { type Ref, useState } from 'react';
-import { useAccount } from 'wagmi';
 
 export async function getStaticProps(context: { locale: string }) {
   return {

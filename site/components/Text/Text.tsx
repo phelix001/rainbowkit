@@ -1,5 +1,6 @@
-import { Box, type BoxProps } from 'components/Box/Box';
 import React from 'react';
+
+import { Box, type BoxProps } from 'components/Box/Box';
 import * as styles from './Text.css';
 
 type Props = {

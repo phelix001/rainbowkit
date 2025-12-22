@@ -1,3 +1,7 @@
+import React, { useState } from 'react';
+import NextImage from 'next/legacy/image';
+import copy from 'copy-to-clipboard';
+
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Code } from 'components/Code/Code';
@@ -10,10 +14,7 @@ import { Pre } from 'components/Pre/Pre';
 import { PropsTable } from 'components/PropsTable/PropsTable';
 import { Table } from 'components/Table/Table';
 import { Text } from 'components/Text/Text';
-import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
-import NextImage from 'next/legacy/image';
-import React, { useState } from 'react';
 import { Announcement } from '../Announcement/Announcement';
 
 export const components = {

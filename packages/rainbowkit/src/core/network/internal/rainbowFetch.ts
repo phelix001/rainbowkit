@@ -12,8 +12,7 @@ export async function rainbowFetch<TData>(
   url: RequestInfo,
   opts: RainbowFetchRequestOpts,
 ) {
-  // biome-ignore lint/style/noParameterAssign: ignore
-  opts = {
+  const options: RainbowFetchRequestOpts = {
     headers: {},
     method: 'get',
     ...opts, // Any other fetch options
@@ -23,12 +22,14 @@ export async function rainbowFetch<TData>(
   if (!url) throw new Error('rainbowFetch: Missing url argument');
 
   const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), opts.timeout);
+  const id = setTimeout(() => controller.abort(), options.timeout);
 
-  const { body, params, headers, ...otherOpts } = opts;
+  const { body, params, headers, ...otherOpts } = options;
 
   const requestBody =
-    body && typeof body === 'object' ? JSON.stringify(opts.body) : opts.body;
+    body && typeof body === 'object'
+      ? JSON.stringify(options.body)
+      : options.body;
 
   const response = await fetch(`${url}${createParams(params)}`, {
     ...otherOpts,

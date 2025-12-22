@@ -1,4 +1,5 @@
-import React, { type ReactNode, useContext } from 'react';
+import { type ReactNode, useContext } from 'react';
+
 import { isMobile } from '../../utils/isMobile';
 import { Box, type BoxProps } from '../Box/Box';
 import {
