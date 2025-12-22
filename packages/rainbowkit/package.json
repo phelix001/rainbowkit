@@ -57,7 +57,7 @@
     "@vanilla-extract/css-utils": "0.1.6",
     "@vanilla-extract/private": "1.0.9",
     "autoprefixer": "^10.4.21",
-    "dotenv": "^16.4.5",
+    "dotenv": "^17.2.3",
     "jsdom": "^25.0.0",
     "msw": "^2.11.2",
     "nock": "^13.4.0",
