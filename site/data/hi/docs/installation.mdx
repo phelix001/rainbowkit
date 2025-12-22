@@ -114,6 +114,21 @@ export const YourApp = () => {
 
 कुछ बिल्ड उपकरणों के लिए अतिरिक्त सेटअप की आवश्यकता होगी।
 
+##### Next.js
+
+RainbowKit works with both [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) (the default bundler in Next.js 16+) and [webpack](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack).
+
+If you're using plugins that still require Webpack, add the `--webpack` flag to your scripts:
+
+```json
+{
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack"
+  }
+}
+```
+
 ##### रीमिक्स
 
 [रीमिक्स](https://remix.run) का उपयोग करते वक्त, आपको `buffer`, `events` और `http` मॉड्यूल्स को पोलीफ़िल करना होगा। नीचे रीमिक्स कॉन्फ़िगरेशन का संदर्भ लें, या [हमारे नमूना रीमिक्स प्रोजेक्ट](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix) को देखें।
