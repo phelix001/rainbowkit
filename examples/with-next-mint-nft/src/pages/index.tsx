@@ -11,6 +11,10 @@ import {
 import { rainbowKitNftAbi } from '../../contract/abi/';
 import FlipCard, { BackCard, FrontCard } from '../../components/FlipCard';
 
+export const getServerSideProps: GetServerSideProps = async () => {
+  return { props: {} };
+};
+
 const contractConfig = {
   address: '0x566cbBf5D5c7c1C14f91fBD05910A539515603f2',
   abi: rainbowKitNftAbi,
