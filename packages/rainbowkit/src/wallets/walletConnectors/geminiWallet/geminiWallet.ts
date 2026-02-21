@@ -1,16 +1,10 @@
-import { type CreateConnectorFn, createConnector } from 'wagmi';
-import { gemini } from 'wagmi/connectors';
-import type { Wallet, WalletDetailsParams } from '../../Wallet';
+import type { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
-export interface GeminiWalletOptions {
-  appName: string;
-  appIcon?: string;
-}
-
-export const geminiWallet = ({
-  appName,
-  appIcon,
-}: GeminiWalletOptions): Wallet => {
+export const geminiWallet = (): Wallet => {
   return {
     id: 'gemini',
     name: 'Gemini Wallet',
@@ -19,7 +13,7 @@ export const geminiWallet = ({
     iconUrl: async () => (await import('./geminiWallet.svg')).default,
     iconAccent: '#1FC4DF',
     iconBackground: '#1FC4DF',
-    installed: true,
+    installed: hasInjectedProvider({ flag: 'isGemini' }),
     downloadUrls: {
       browserExtension: 'https://keys.gemini.com',
       qrCode: 'https://keys.gemini.com',
@@ -72,18 +66,9 @@ export const geminiWallet = ({
         ],
       },
     },
-    createConnector: (walletDetails: WalletDetailsParams) => {
-      const connector: CreateConnectorFn = gemini({
-        appMetadata: {
-          name: appName,
-          icon: appIcon,
-        },
-      });
-
-      return createConnector((config) => ({
-        ...connector(config),
-        ...walletDetails,
-      }));
-    },
+    createConnector: getInjectedConnector({
+      flag: 'isGemini',
+      namespace: 'ethereum',
+    }),
   };
 };

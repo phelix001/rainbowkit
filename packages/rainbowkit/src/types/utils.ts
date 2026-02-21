@@ -33,6 +33,7 @@ export type WalletProviderFlags =
   | 'isFrame'
   | 'isFrontier'
   | 'isGamestop'
+  | 'isGemini'
   | 'isHyperPay'
   | 'isImToken'
   | 'isKuCoinWallet'
